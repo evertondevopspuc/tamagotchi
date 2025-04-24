@@ -5,13 +5,13 @@
 package com.example.tamagotchi.model;
 
 public class Tamagotchi {
-    public final String nome;
+    private String nome;
     private EstagioDeVida estagioDeVida;
     private int idade;
-    private final Necessidade fome;
-    private final Necessidade felicidade;
-    private final Necessidade energia;
-    public final Necessidade saude;
+    private Necessidade fome;
+    private Necessidade felicidade;
+    private Necessidade energia;
+    private Necessidade saude;
 
     public Tamagotchi(String nome) {
         this.nome = nome;
@@ -24,59 +24,159 @@ public class Tamagotchi {
     }
 
     public void alimentar() {
-        System.out.println("Você alimentou o " + nome + ".");
-        fome.alterarEstado(20);
+        System.out.println("Você alimentou o " + getNome() + ".");
+        getFome().alterarEstado(20);
     }
 
     public void brincar() {
-        System.out.println("Você brincou com o " + nome + ".");
-        felicidade.alterarEstado(15);
-        energia.alterarEstado(-10);
+        System.out.println("Você brincou com o " + getNome() + ".");
+        getFelicidade().alterarEstado(15);
+        getEnergia().alterarEstado(-10);
     }
 
     public void dormir() {
-        System.out.println(nome + " está dormindo.");
-        energia.alterarEstado(30);
+        System.out.println(getNome() + " está dormindo.");
+        getEnergia().alterarEstado(30);
     }
 
-    public void verificarStatus() {
-        System.out.println("Status do " + nome + ":");
-        System.out.println("Estágio de Vida: " + estagioDeVida);
-        System.out.println("Idade: " + idade + " dias");
-        System.out.println("Fome: " + fome.getEstado());
-        System.out.println("Felicidade: " + felicidade.getEstado());
-        System.out.println("Energia: " + energia.getEstado());
-        System.out.println("Saúde: " + saude.getEstado());
+    public String verificarStatus() {
+        String status = "";
+        status += "Status do " + getNome() + ":\n";
+        status +="Estágio de Vida: " + getEstagioDeVida() + "\n";
+        status +="Idade: " + getIdade() + " dias" + "\n";
+        status +="Fome: " + getFome().getEstado() + "\n";
+        status +="Felicidade: " + getFelicidade().getEstado() + "\n";
+        status +="Energia: " + getEnergia().getEstado() + "\n";
+        status +="Saúde: " + getSaude().getEstado() + "\n";
+        System.out.println(status);
+        return status;
     }
 
     public void envelhecer() {
-        idade++;
-        if (idade >= 10 && idade < 20) {
-            estagioDeVida = EstagioDeVida.ADOLESCENTE;
-        } else if (idade >= 20) {
-            estagioDeVida = EstagioDeVida.ADULTO;
+        setIdade(getIdade() + 1);
+        if (getIdade() >= 10 && getIdade() < 20) {
+            setEstagioDeVida(EstagioDeVida.ADOLESCENTE);
+        } else if (getIdade() >= 20) {
+            setEstagioDeVida(EstagioDeVida.ADULTO);
         }
-        System.out.println(nome + " envelheceu! Está agora no estágio " + estagioDeVida + ".");
+        System.out.println(getNome() + " envelheceu! Está agora no estágio " + getEstagioDeVida() + ".");
     }
 
     public void atualizarEstado() {
-        fome.alterarEstado(-5); // Diminui a fome naturalmente
-        felicidade.alterarEstado(-3); // Diminui a felicidade naturalmente
-        energia.alterarEstado(-7); // Diminui a energia naturalmente
-        saude.alterarEstado(-2); // Diminui a saude naturalmente
+        getFome().alterarEstado(-5); // Diminui a fome naturalmente
+        getFelicidade().alterarEstado(-3); // Diminui a felicidade naturalmente
+        getEnergia().alterarEstado(-7); // Diminui a energia naturalmente
+        getSaude().alterarEstado(-2); // Diminui a saude naturalmente
 
         // Verifica se o Tamagotchi precisa de atenção especial
-        if (fome.getEstado() <= 0) {
-            System.out.println(nome + " está com muita fome!");
+        if (getFome().getEstado() <= 0) {
+            System.out.println(getNome() + " está com muita fome!");
         }
-        if (felicidade.getEstado() <= 0) {
-            System.out.println(nome + " está infeliz!");
+        if (getFelicidade().getEstado() <= 0) {
+            System.out.println(getNome() + " está infeliz!");
         }
-        if (energia.getEstado() <= 0) {
-            System.out.println(nome + " está exausto!");
+        if (getEnergia().getEstado() <= 0) {
+            System.out.println(getNome() + " está exausto!");
         }
-        if (saude.getEstado() <= 0) {
-            System.out.println(nome + " está doente!");
+        if (getSaude().getEstado() <= 0) {
+            System.out.println(getNome() + " está doente!");
         }
+    }
+
+   
+    /**
+     *
+     * @return
+     */
+    public Necessidade getFome() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.fome;
+    }
+
+    public Necessidade getFelicidade() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.felicidade;
+    }
+
+    public Necessidade getEnergia() {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.energia;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the estagioDeVida
+     */
+    public EstagioDeVida getEstagioDeVida() {
+        return estagioDeVida;
+    }
+
+    /**
+     * @param estagioDeVida the estagioDeVida to set
+     */
+    public void setEstagioDeVida(EstagioDeVida estagioDeVida) {
+        this.estagioDeVida = estagioDeVida;
+    }
+
+    /**
+     * @return the idade
+     */
+    public int getIdade() {
+        return idade;
+    }
+
+    /**
+     * @param idade the idade to set
+     */
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    /**
+     * @param fome the fome to set
+     */
+    public void setFome(Necessidade fome) {
+        this.fome = fome;
+    }
+
+    /**
+     * @param felicidade the felicidade to set
+     */
+    public void setFelicidade(Necessidade felicidade) {
+        this.felicidade = felicidade;
+    }
+
+    /**
+     * @param energia the energia to set
+     */
+    public void setEnergia(Necessidade energia) {
+        this.energia = energia;
+    }
+
+    /**
+     * @return the saude
+     */
+    public Necessidade getSaude() {
+        return saude;
+    }
+
+    /**
+     * @param saude the saude to set
+     */
+    public void setSaude(Necessidade saude) {
+        this.saude = saude;
     }
 }

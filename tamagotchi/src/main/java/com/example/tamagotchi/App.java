@@ -51,8 +51,8 @@ public class App
             tamagotchi.envelhecer();
 
             // Verifica se o Tamagotchi morreu
-            if (tamagotchi.saude.getEstado() == 0) {
-                System.out.println(tamagotchi.nome + " morreu...");
+            if (tamagotchi.getSaude().getEstado() == 0) {
+                System.out.println(tamagotchi.getNome() + " morreu...");
                 scanner.close();
                 return;
             }

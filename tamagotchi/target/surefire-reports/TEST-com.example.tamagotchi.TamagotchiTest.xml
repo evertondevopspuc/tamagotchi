@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.tamagotchi.AppTest" time="0.007" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.tamagotchi.TamagotchiTest" time="0.057" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -53,5 +53,31 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="testApp" classname="com.example.tamagotchi.AppTest" time="0.002"/>
+  <testcase name="testAlimentar" classname="com.example.tamagotchi.TamagotchiTest" time="0.028">
+    <system-out><![CDATA[Você alimentou o Test.
+]]></system-out>
+  </testcase>
+  <testcase name="testBrincar" classname="com.example.tamagotchi.TamagotchiTest" time="0.001">
+    <system-out><![CDATA[Você brincou com o Test.
+]]></system-out>
+  </testcase>
+  <testcase name="testVerificarStatus" classname="com.example.tamagotchi.TamagotchiTest" time="0.003">
+    <system-out><![CDATA[Status do Test:
+Estágio de Vida: BEBE
+Idade: 0 dias
+Fome: 100
+Felicidade: 100
+Energia: 100
+Saúde: 100
+
+]]></system-out>
+  </testcase>
+  <testcase name="testDormir" classname="com.example.tamagotchi.TamagotchiTest" time="0.002">
+    <system-out><![CDATA[Test está dormindo.
+]]></system-out>
+  </testcase>
+  <testcase name="testEnvelhecer" classname="com.example.tamagotchi.TamagotchiTest" time="0.001">
+    <system-out><![CDATA[Test envelheceu! Está agora no estágio BEBE.
+]]></system-out>
+  </testcase>
 </testsuite>
