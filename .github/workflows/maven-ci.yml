@@ -1,0 +1,36 @@
+name: Java CI with Maven
+
+on:
+  # Dispara o workflow em pushes e PRs para o branch main
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Passo 1: Fazer checkout do código
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Passo 2: Configurar JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # Passo 3: Compilar o projeto e executar os testes
+      - name: Build with Maven
+        run: mvn -B verify
+
+      # Passo 4: Publicar resultados dos testes (opcional)
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: target/surefire-reports/
